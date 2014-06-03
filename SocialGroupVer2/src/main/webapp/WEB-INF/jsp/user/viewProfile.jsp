@@ -16,7 +16,7 @@
 
 
 
-<title>Welcome ${user.firstName} ${user.lastName}</title>
+<title>Welcome ${user.firstName}, ${user.lastName}</title>
 </head>
 <body>
 
@@ -37,7 +37,7 @@
             <div id="hmenu-wpr">
               <ul id="hmenu" class="sf-menu sf-js-enabled sf-shadow">
                 <li class="current" style="border:none">
-                  <a class="toplvl" href="#">Home</a>
+                  <a class="toplvl" href="../user/profile.html">Home</a>
                 </li>
                 <li>
                   <a href="logout.html" class="toplvl">Logout</a>
@@ -48,13 +48,7 @@
                   	<li>
                   	 <a href = "../search/allPublic.html">Public Groups</a>
                   	</li>
-                  	<li>
-                  	 <a href = "../search/allPriv.html">Private Groups</a>
-                  	</li>
                   </ul>
-                </li>
-                <li>
-                  <a href="notifications.html" class="toplvl">Notications ${numNtfs}</a>
                 </li>
               </ul>
             </div>
@@ -69,18 +63,17 @@
                 <br>
                 
                 <div>
+                	<h1>${friend.firstName} ${friend.lastName}</h1>
                     <img src="../images/blue_group.png" style="width:100%" />
                   </div>
                   
                   <div class="sidebox1">
-                    <h2>Groups</h2>
+                    <h2>List of groups that ${friend.firstName} created</h2>
                     <div class="vmenu">
                       <ul>
-                      <li>
-                      <a href = "../user/groups/newGroup.html">Create a new group</a>
-                      </li>
-                      <c:if test="${not empty user.groups}" >
-						<c:forEach items="${user.groups}" var="group" varStatus="status">
+                 
+                      <c:if test="${not empty ownerG}" >
+						<c:forEach items="${ownerG}" var="group" varStatus="status">
 						<li>
 						
 <%-- 						<form action = "groups/group.html" method="GET"> --%>
@@ -112,7 +105,7 @@
 <!--                     <img src="images/business-man-1.png" style="width:100%" /> -->
 <!--                   </div> -->
                   <div class="sidebox1">
-                    <h2>Groups I am in..</h2>
+                    <h2>${friend.firstName} is apart of...</h2>
                     <ul>
                     
                     
@@ -125,14 +118,6 @@
 <%-- 						<input type="hidden" value="${group.id}" id = "hiddenGroupId" name="hiddenGroupId"> --%>
 <%-- 						</form>	 --%>
 						<a href = "groups/group.html?groupId=${inGroups.id}"> -- ${inGroups.groupName} -- </a>
-						
-						<form  class ="unfollow" action="unfollow.html" method="GET">  
-                   			<input type ="hidden" name="uid" value="${user.id}">
-                   			<input type ="hidden" name="unfollow" value="${inGroups.id}">
-                   			<button style = "width:60px" >unfollow </button>
-                   
-                  		</form>
-						
 						</li>
 						</c:forEach>
 						</c:if>
@@ -153,33 +138,6 @@
             
               <div id="main">
                 <div class="content">
-                <section class="group g">
-								<center>
-									<h1>${user.firstName}</h1>
-								</center>
-								<center>
-									<h2>Timeline</h2>
-								</center>
-
-								<ul>
-									<c:if test='${not empty timeline}'>
-										<c:forEach items="${timeline}" var="comment"
-											varStatus="status">
-											<section class="comments c">
-
-											<li><b>${comment.postedById.firstName}</b> commented
-												<hr></li>
-											<li>${comment.post}</li>
-											</section>
-										</c:forEach>
-									</c:if>
-									<c:if test='${empty timeline}'>
-										<li>The timeline is empty</li>
-									</c:if>
-
-								</ul>
-								</section>
-								
 
 
                 </div>

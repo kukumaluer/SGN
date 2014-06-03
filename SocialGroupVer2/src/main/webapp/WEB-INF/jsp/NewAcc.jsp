@@ -41,13 +41,12 @@
             <div id="hmenu-wpr">
               <ul id="hmenu" class="sf-menu sf-js-enabled sf-shadow">
                 <li class="current" style="border:none">
-                  <a class="toplvl" href="#">Home</a>
+                  <a class="toplvl" href="home.html">Home</a>
                 </li>
                 <li>
-                <c:if test="${ empty user }">
+                
                   <a href="login.html" class="toplvl">Login</a>
-                  </c:if>
-                 
+                
                 </li>
          
                 <li>
@@ -63,6 +62,10 @@
                 <div class="content">
                   <h1>Create Account</h1>
                   <h3>Social Group Network </h3>
+                    <c:if test = "${not empty err}">
+						<font color = "red">${err}</font>
+					</c:if>
+                    
                     
                     
                     <section class = "signup su">
@@ -70,20 +73,20 @@
 				<ul >
 
 					<li >
-					<label> First Name:</label> <form:input path="firstName" />
+					<label> First Name:</label> <form:input path="firstName" /><span style = "color:red;"><form:errors path = "firstName"/></span>
 					</li>	
 					<li>
-					<label>	Last Name: </label> <form:input path="lastName" />
+					<label>	Last Name: </label> <form:input path="lastName" /><span style = "color:red;"><form:errors path = "lastName"/></span>
 					</li>	
 					<li>
 					
 					
-					<label>Email: </label> <form:input path="email" />
+					<label>Email: </label> <form:input path="email" /><span style = "color:red;"><form:errors path = "email"/></span>
 						</li>
 					
 
 					<li>
-					<label>	Password </label>  <form:password path="password" />
+					<label>	Password </label>  <form:password path="password" /><span style = "color:red;"><form:errors path = "password"/></span>
 					</li>	
 					
 				</ul>

@@ -48,6 +48,7 @@ public class Group implements Serializable {
 	@OrderBy("createdOn asc")
 	private List<Comment> commets;
 	
+		
 	private boolean isPublic;
 	
 	

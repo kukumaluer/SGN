@@ -74,9 +74,10 @@
                   
                    </td>
                    <td>
-                  <form  class ="addG" action="addGroup.html" method="GET">  
+                  <form  class ="request" action="request.html" method="GET">  
                    <input type ="hidden" name="groupId" value="${all.id}">
-                   <button style = "width:40px">Add</button>
+                   <input type ="hidden" name="ownerId" value="${all.ownerId.id}">
+                   <button style = "width:60px">Request</button>
                    
                   </form>
         			</td>

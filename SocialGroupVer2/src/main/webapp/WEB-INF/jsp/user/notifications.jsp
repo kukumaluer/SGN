@@ -37,7 +37,7 @@
             <div id="hmenu-wpr">
               <ul id="hmenu" class="sf-menu sf-js-enabled sf-shadow">
                 <li class="current" style="border:none">
-                  <a class="toplvl" href="#">Home</a>
+                  <a class="toplvl" href="profile.html">Home</a>
                 </li>
                 <li>
                   <a href="logout.html" class="toplvl">Logout</a>
@@ -153,34 +153,26 @@
             
               <div id="main">
                 <div class="content">
-                <section class="group g">
-								<center>
-									<h1>${user.firstName}</h1>
-								</center>
-								<center>
-									<h2>Timeline</h2>
-								</center>
+				
+				<section class="group g">
+			<ul>
+				<c:forEach items="${user.notifications}"  var ="notifications" varStatus ="status">
+				<li>
+				${notifications.friendId.firstName} ${notifications.friendId.lastName} wants to add 
+				your group ${notifications.groudId.groupName }.
+				<form  class ="addG" action="approve.html" method="GET">  
+                   <input type ="hidden" name="groupId" value="${notifications.groudId.id}">
+                   <input type ="hidden" name="requesterId" value="${notifications.friendId.id}">
+                   <input type ="hidden" name="ntfIndex" value="${status.index}">
+                   <button style = "width:40px">Add</button> 
+                   </form>
+				</li>
+				
+				</c:forEach>			
+			</ul>
 
-								<ul>
-									<c:if test='${not empty timeline}'>
-										<c:forEach items="${timeline}" var="comment"
-											varStatus="status">
-											<section class="comments c">
-
-											<li><b>${comment.postedById.firstName}</b> commented
-												<hr></li>
-											<li>${comment.post}</li>
-											</section>
-										</c:forEach>
-									</c:if>
-									<c:if test='${empty timeline}'>
-										<li>The timeline is empty</li>
-									</c:if>
-
-								</ul>
-								</section>
-								
-
+</section>
+		
 
                 </div>
               </div>

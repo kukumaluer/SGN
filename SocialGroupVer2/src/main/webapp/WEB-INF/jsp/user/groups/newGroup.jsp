@@ -64,10 +64,10 @@
 <form:form modelAttribute="group">
 <ul>
 <li>
-<label for = "groupName">Group Name </label>  <form:input path ='groupName' />
+<label for = "groupName">Group Name </label>  <form:input path ='groupName' /><span style="color:red"><form:errors path = "groupName"/> </span>
 </li>
 <li>
-<label for = "category"> Category </label>   <form:input path="category"/> 
+<label for = "category"> Category </label>   <form:input path="category"/> <span style="color:red"><form:errors path = "category"/> </span>
 </li>
 <li>
 <label for = "isPublic" > Make it private or Public </label>   

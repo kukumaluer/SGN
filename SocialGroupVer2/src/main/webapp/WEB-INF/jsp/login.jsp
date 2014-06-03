@@ -62,6 +62,12 @@
                 <div class="content">
                   <h1>Login</h1>
                   
+                  <c:if test = "${not empty err }">
+                  <span style = "color:red">
+                  <b>${err}</b>
+                  </span>
+                  </c:if>
+                  
                  <section class= "loginform cf">
                   <form:form modelAttribute = "users">
                   

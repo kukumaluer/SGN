@@ -58,6 +58,10 @@ public class User implements Serializable{
 			cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private List<Group> groups;
 	
+	@OneToMany(mappedBy = "notified",
+			cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	private List<Notifications> notifications;
+
 	
 	
 	
@@ -66,6 +70,8 @@ public class User implements Serializable{
 		super();
 		enabled = true;
 		this.groups = new ArrayList<Group>();
+		this.notifications = new ArrayList<Notifications>();
+		
 	
 	}
 
@@ -80,7 +86,8 @@ public class User implements Serializable{
 		this.password = password;
 		this.enabled = enabled;
 		this.groups = new ArrayList<Group>();
-	
+		this.notifications = new ArrayList<Notifications>();
+		
 		
 	}
 
@@ -97,6 +104,8 @@ public class User implements Serializable{
 		this.email = email;
 		this.enabled = enabled;
 		this.groups = new ArrayList<Group>();
+		this.notifications = new ArrayList<Notifications>();
+		
 	
 	}
 
@@ -181,6 +190,16 @@ public class User implements Serializable{
 	{
 		this.groups.remove(group);
 		
+	}
+
+
+	public List<Notifications> getNotifications() {
+		return notifications;
+	}
+
+
+	public void setNotifications(List<Notifications> notifications) {
+		this.notifications = notifications;
 	}
 
 	

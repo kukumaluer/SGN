@@ -8,6 +8,13 @@
         primary key (cid)
     );
 
+    create table group_friend_id (
+        id int4 not null,
+        friend_id int4,
+        group_Id  int4,
+        primary key (id)
+    );
+
     create table groups (
         id int4 not null,
         category varchar(255),
@@ -22,10 +29,11 @@
         Users_id int4 not null
     );
 
-    create table groups_users_id (
+    create table notifications (
         id int4 not null,
-        friend_id bytea,
-        groupId  bytea,
+        friend_to_add_id int4,
+        adding_group_id int4,
+        notify_user_id int4,
         primary key (id)
     );
 
@@ -67,5 +75,20 @@
         add constraint FK_78p7vbckpk4tlwhweqwv6ymo2 
         foreign key (groups_id) 
         references groups;
+
+    alter table notifications 
+        add constraint FK_2c6lnw85wb1a1oyfnnhuyka7g 
+        foreign key (friend_to_add_id) 
+        references users;
+
+    alter table notifications 
+        add constraint FK_c1xlusuvb0icrlfx87csi4tsk 
+        foreign key (adding_group_id) 
+        references groups;
+
+    alter table notifications 
+        add constraint FK_3kv9c3og918hid6ecjji18w23 
+        foreign key (notify_user_id) 
+        references users;
 
     create sequence hibernate_sequence;
